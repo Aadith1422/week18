@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block title %}Verify OTP{% endblock %}
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow p-4 text-center" style="max-width: 500px; width: 100%;">
+        <h2 class="text-primary">Enter OTP</h2>
+        <p class="mb-3">We've sent a 6-digit OTP to your email. Please enter it below.</p>
+
+        <!-- OTP Verification Form -->
+        <form method="POST" action="{{ url_for('verify_otp') }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="email" value="{{ email }}">
+            <div class="mb-3">
+                <input type="text" name="otp" class="form-control text-center" placeholder="Enter OTP" required>
+            </div>
+            <!-- Google reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="{{ config['RECAPTCHA_SITE_KEY'] }}"></div>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+            <button type="submit" class="btn btn-success w-100">Verify</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

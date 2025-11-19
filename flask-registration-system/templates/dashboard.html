@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow p-4 text-center" style="max-width: 500px; width: 100%;">
+        <h2 class="text-primary">Welcome, {{ email }}</h2>
+        <p class="mt-3">✅ You are successfully logged in and your email is verified.</p>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger mt-3">Logout</a>
+    </div>
+</div>
+{% endblock %}
