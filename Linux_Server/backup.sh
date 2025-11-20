@@ -8,18 +8,19 @@ TIMESTAMP=$(date +%Y-%m-%d_%H-%M-%S)
 
 FILENAME="backup-$TIMESTAMP.tar.gz"
 
-DEST_FILE="$BACKUP_DIR/FILENAME"
+DEST_FILE="$BACKUP_DIR/$FILENAME"
 
 
 echo "Starting backup of $SOURCE_DIR..."
 
 
-mrdir -p "SOURCE_DIR..."
-
-tar -czvf "$DEST_FILE" "SOURCE_DIR"
+mkdir -p "$BACKUP_DIR"
 
 
-if [ $? -eq 0]; then 
+tar -czvf "$DEST_FILE" "$SOURCE_DIR"
+
+
+if [ $? -eq 0 ]; then 
   echo "Backup succesful!"
   echo "Archive created at: $DEST_FILE"
 
